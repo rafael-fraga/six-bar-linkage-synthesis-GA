@@ -12,6 +12,10 @@ def both_intersections(x0, y0, r0, x1, y1, r1):
     if h_sq < 0:
         h_sq = 0.0
     h = np.sqrt(h_sq)
+
+    if d > r0 + r1 or d < abs(r0 - r1):
+        return [[np.nan, np.nan], [np.nan, np.nan]]
+
     x2 = x0 + a * (x1 - x0) / d
     y2 = y0 + a * (y1 - y0) / d
     rx = -(y1 - y0) * (h / d)
