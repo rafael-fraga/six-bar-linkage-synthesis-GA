@@ -6,13 +6,13 @@ class Population():
         self.size = size
         self.chromosomes = [Chromosome() for _ in range(size)]
 
-    def select(self, target_trajectory, num_parents, resolution=100):
+    def select(self, target_trajectory, num_parents):
         for chromo in self.chromosomes:
-            chromo.update_fitness(target_trajectory, resolution=resolution)
+            chromo.update_fitness(target_trajectory)
         self.chromosomes.sort(key=lambda chromo: chromo.fitness)
         self.chromosomes = self.chromosomes[:num_parents]
 
-    def insert_chromosome(self, chromosome):
+    def insert_chromosome(self, chromosome=Chromosome()):
         self.chromosomes.append(chromosome)
 
     def crossover(self):

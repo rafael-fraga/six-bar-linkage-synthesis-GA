@@ -24,10 +24,11 @@ class Chromosome():
         self.fitness = None
         self.trajectory = None
 
-    def update_trajectory(self, resolution=100):
+    def update_trajectory(self, resolution):
         self.trajectory = calculate_trajectory(self, resolution=resolution)
 
-    def update_fitness(self, target_trajectory, resolution=100):
+    def update_fitness(self, target_trajectory):
+        resolution = len(target_trajectory)
         self.update_trajectory(resolution=resolution)
         self.fitness = calculate_fitness(self.trajectory, target_trajectory)
 
